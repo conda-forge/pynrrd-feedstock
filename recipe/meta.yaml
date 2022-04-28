@@ -1,5 +1,5 @@
 {% set name = "pynrrd" %}
-{% set version = "0.4.2" %}
+{% set version = "0.4.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/mhe/pynrrd/archive/v{{ version }}.tar.gz
-  sha256: 0e0c60c9927adb31d97a7e3d00756dec987f115b2857dec0d6e4641490acfbd6
+  sha256: 0fba1c97ec2fc6a60ef1a56eec8f47d5f570168d22b4e8763565ff93f5366c27
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -35,7 +35,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Simple pure-python module for reading and writing nrrd files.'
+  summary: Simple pure-python module for reading and writing nrrd files.
 
 extra:
   recipe-maintainers:
