@@ -16,14 +16,14 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.7
     - pip
     # it looks like numpy is imported in the setup.py via
     # another import, but the package does not build against
     # the numpy C API - thus I am putting it in host here
     - numpy
   run:
-    - python
+    - python >=3.7
     - numpy
     - nptyping
     - typing_extensions
