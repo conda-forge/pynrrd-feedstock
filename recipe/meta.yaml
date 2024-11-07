@@ -16,19 +16,22 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
+    - setuptools
     # it looks like numpy is imported in the setup.py via
     # another import, but the package does not build against
     # the numpy C API - thus I am putting it in host here
     - numpy
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - numpy
     - nptyping
     - typing_extensions
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - nrrd
     # the way pynrrd tests are organized in source tree (sub-pkg of nrrd pkg)
