@@ -1,5 +1,5 @@
 {% set name = "pynrrd" %}
-{% set version = "1.0.0" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/mhe/pynrrd/archive/v{{ version }}.tar.gz
-  sha256: d0c98f607e6218768b1b8bd83edf7348a85f4f748d426857ae08264acbecfbca
+  sha256: 698fbf3384ce2f5637cb6c2991917f2208fccaeaebc0fdc20ab5fa0a8666c0c4
 
 build:
   noarch: python
@@ -16,19 +16,22 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
+    - setuptools
     # it looks like numpy is imported in the setup.py via
     # another import, but the package does not build against
     # the numpy C API - thus I am putting it in host here
     - numpy
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - numpy
     - nptyping
     - typing_extensions
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - nrrd
     # the way pynrrd tests are organized in source tree (sub-pkg of nrrd pkg)
